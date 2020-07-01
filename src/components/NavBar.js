@@ -3,15 +3,16 @@ import React, { Fragment } from 'react';
 function NavBar() {
     return (
         <Fragment>
-            <nav className="navbar navbar-light bg-light">
-                <a className="navbar-brand">Employee Directory</a>
+        <div className="container">
+            <nav className="navbar navbar-dark bg-primary">
+                <h1 className="text-white">Employee Directory</h1>
                 <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input className="form-control mr-sm-2" type="search" placeholder="Enter Employee Name" aria-label="Search" />
                 </form>
             </nav>
+        </div>
         </Fragment>
     );
 }
 
-export default NavBar
+export default NavBar;

@@ -1,9 +1,18 @@
 import React, { Fragment } from 'react';
-import './App.css';
+// import NavBar from './components/NavBar';
+// import EmployeeTable from './components/EmployeeTable';
+import Directory from './components/Directory';
 import NavBar from './components/NavBar';
+// import employees from "./employees.json";
 
 function App() {
-      return <NavBar />;
+  return (
+    <Fragment>
+      <NavBar />
+      <Directory />
+    </Fragment>
+  );
+
 }
 
 export default App;
