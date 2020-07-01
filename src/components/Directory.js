@@ -42,6 +42,28 @@ class Directory extends Component {
         };
     };
 
+    // Sort Employees by Name
+    sortByCity = () => {
+        const filterEmp = this.state.filteredEmployees;
+        if (this.state.order === "desc") {
+            const sortEmp = filterEmp.sort((a, b) => 
+                (a.location.city > b.location.city) ? -1 : 1);
+            
+            this.setState({
+                filteredEmployees: sortEmp,
+                order: "asc"
+            });
+        } else {
+            const sortEmp = filterEmp.sort((a, b) => 
+                (a.location.city > b.location.city) ? 1 : -1);
+    
+            this.setState({
+                filteredEmployees: sortEmp,
+                order: "desc"
+            });
+        };
+    };
+
     // Information rendered to be displayed
     render() {
         return (
@@ -49,6 +71,7 @@ class Directory extends Component {
                 <EmployeeTable
                     results={this.state.filteredEmployees}
                     sortByName={this.sortByName}
+                    sortByCity={this.sortByCity}
                 />
             </div >
         )
