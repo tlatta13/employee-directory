@@ -2,7 +2,7 @@ import API from "../API";
 import React, { Component } from "react"
 // import NavBar from "./NavBar"
 import EmployeeTable from "./EmployeeTable"
-// import "./style.css";
+
 
 class Directory extends Component {
     state = {
@@ -12,23 +12,48 @@ class Directory extends Component {
         order: ""
     };
 
-    // this is the initialization, what do you want the page to display when page it's first loaded
+    // Initialization that runs after component output is rendered to DOM
     componentDidMount() {
         API.getEmployees().then(res => this.setState({
             employees: res.data.results,
-        })).catch(err => console.log(err))
-    }
+            filteredEmployees: res.data.results
+        })).catch(err => console.log(err));
+    };
 
+    // Sort Employees by Name
+    sortByName = () => {
+        const filterEmp = this.state.filteredEmployees;
+        if (this.state.order === "desc") {
+            const sortEmp = filterEmp.sort((a, b) => 
+                (a.name.first > b.name.first) ? -1 : 1);
+            
+            this.setState({
+                filteredEmployees: sortEmp,
+                order: "asc"
+            });
+        } else {
+            const sortEmp = filterEmp.sort((a, b) => 
+                (a.name.first > b.name.first) ? 1 : -1);
+    
+            this.setState({
+                filteredEmployees: sortEmp,
+                order: "desc"
+            });
+        };
+    };
+
+    // Information rendered to be displayed
     render() {
-
         return (
             <div className="container">
-                <EmployeeTable results={this.state.employees}/>
+                <EmployeeTable
+                    results={this.state.filteredEmployees}
+                    sortByName={this.sortByName}
+                />
             </div >
-
-
         )
     }
 }
 
+// Export directory component
 export default Directory
