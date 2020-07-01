@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
-function NavBar() {
+// Navbar Component with employee filter input
+function NavBar(props) {
     return (
         <Fragment>
             <nav className="navbar navbar-dark bg-primary">
@@ -9,6 +10,8 @@ function NavBar() {
                     {/* Input to filter employees */}
                     <input
                         className="form-control mr-sm-2"
+                        onChange={props.handleEmployeeInput}
+                        value={props.value}
                         type="text"
                         placeholder="Enter Employee Name"
                      />

@@ -1,6 +1,6 @@
 import API from "../API";
 import React, { Component } from "react"
-// import NavBar from "./NavBar"
+import NavBar from "./NavBar"
 import EmployeeTable from "./EmployeeTable"
 
 
@@ -64,10 +64,26 @@ class Directory extends Component {
         };
     };
 
+    // Filters through employees based on input in the Navbar
+    handleEmployeeInput = event => {
+        const employees = this.state.employees;
+        const UserInput = event.target.value;
+        const filteredEmployees = employees.filter(employee => 
+            employee.name.first.toLowerCase().indexOf(UserInput.toLowerCase()) > -1
+        );
+        this.setState({
+            filteredEmployees
+        });
+    };
+
     // Information rendered to be displayed
     render() {
         return (
             <div className="container">
+                <NavBar
+                    employee={this.state.employees}
+                    handleEmployeeInput={this.handleEmployeeInput}
+                />
                 <EmployeeTable
                     results={this.state.filteredEmployees}
                     sortByName={this.sortByName}
