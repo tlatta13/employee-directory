@@ -22,4 +22,4 @@ Application that allows managers or employees to see a list of company employee 
 <a name="siteLinks"></a>
 ## Site Links
 * [Repository](https://github.com/tlatta13/employee-directory.git)
-* [Deployed Application](https://pure-sands-25600.herokuapp.com/)
+* [Deployed Application](https://aqueous-dawn-32823.herokuapp.com/)
